@@ -1,4 +1,4 @@
-// Copyright (c) 2914 Dmitry Mikhirev
+// Copyright (c) 2014 Dmitry Mikhirev
 // This code is licensed under a BSD-style license.
 // See the LICENSE file for details.
 
