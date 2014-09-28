@@ -1,5 +1,10 @@
+// Copyright (c) 2914 Dmitry Mikhirev
+// This code is licensed under a BSD-style license.
+// See the LICENSE file for details.
+
 package gostribog
 
+// The block size in bytes.
 const BlockSize = 64
 
 var init256 byte = 0x01

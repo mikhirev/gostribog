@@ -1,3 +1,7 @@
+// Copyright (c) 2914 Dmitry Mikhirev
+// This code is licensed under a BSD-style license.
+// See the LICENSE file for details.
+
 package gostribog
 
 import (
@@ -85,6 +89,7 @@ func block(d *digest, p []byte) {
 		p = p[BlockSize:]
 	}
 	if len(p) > 0 {
+		// the very last piece of data
 		lb := len(p) * 8
 		l := [BlockSize]byte{
 			0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
