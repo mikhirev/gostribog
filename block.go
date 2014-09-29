@@ -32,7 +32,7 @@ func spl(state *[BlockSize]byte) {
 	var t [BlockSize]byte
 	for i := 0; i < BlockSize/8; i++ {
 		for j := 0; j < 8; j++ {
-			t[i*8+j] = sbox[state[i+j*8]]
+			t[(i<<3)+j] = sbox[state[i+(j<<3)]]
 		}
 	}
 
@@ -41,13 +41,13 @@ func spl(state *[BlockSize]byte) {
 		var v uint64
 		for k := 0; k < 8; k++ {
 			for j := 0; j < 8; j++ {
-				if t[i*8+k]&(byte(1)<<(7-uint(j))) != 0 {
-					v ^= a[k*8+j]
+				if t[(i<<3)+k]&(byte(1)<<(7-uint(j))) != 0 {
+					v ^= a[(k<<3)+j]
 				}
 			}
 		}
 		for k := 0; k < 8; k++ {
-			state[i*8+k] = byte((v & (uint64(0xFF) << ((7 - uint(k)) * 8))) >> ((7 - uint(k)) * 8))
+			state[(i<<3)+k] = byte((v & (uint64(0xFF) << ((7 - uint(k)) << 3))) >> ((7 - uint(k)) << 3))
 		}
 	}
 }
